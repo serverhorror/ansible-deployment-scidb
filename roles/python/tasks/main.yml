@@ -1,0 +1,8 @@
+---
+- name: SELinux bindings
+  sudo: true
+  sudo_user: root
+  yum:
+    state: present
+    name: libselinux-python
+  when: ansible_os_family == 'RedHat'

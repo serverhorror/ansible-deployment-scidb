@@ -1,0 +1,7 @@
+---
+- name: YUM repository
+  sudo: true
+  sudo_user: root
+  yum:
+    state: present
+    name: "http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm"

@@ -1,0 +1,30 @@
+---
+- name: SciDB
+  hosts: all
+  pre_tasks:
+    - name: YUM Update
+      sudo: true
+      sudo_user: root
+      yum:
+        name: "*"
+        state: latest
+  roles:
+    - python
+    - ssh
+    - scidb_base
+
+- name: SciDB Coordinator
+  hosts: scidb-coordinator*
+  vars:
+    scidb:
+      version: "14.12"
+  roles:
+    - scidb_coordinator
+
+- name: SciDB Worker
+  hosts: scidb-worker*
+  vars:
+    scidb:
+      version: "14.12"
+  roles:
+    - scidb_worker

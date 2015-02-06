@@ -1,0 +1,7 @@
+---
+- name: Install Package
+  sudo: true
+  sudo_user: root
+  yum:
+    name: "scidb-{{ scidb.version }}-all-coord"
+    state: present

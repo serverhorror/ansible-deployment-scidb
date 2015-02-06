@@ -1,0 +1,9 @@
+---
+- name: YUM repository
+  sudo: true
+  sudo_user: root
+  copy:
+    src: scidb.repo
+    dest: /etc/yum.repos.d/scidb.repo
+    mode: "0644"
+- include: user.yml

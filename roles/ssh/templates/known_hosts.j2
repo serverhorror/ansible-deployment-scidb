@@ -1,0 +1,9 @@
+# {{ ansible_managed }}
+{% for host in groups['all'] %}
+{{ host }} ssh-dsa {{ hostvars[host]['ansible_ssh_host_key_dsa_public'] }}
+{{ host }} ssh-rsa {{ hostvars[host]['ansible_ssh_host_key_rsa_public'] }}
+{% if hostvars[host]['ansible_domain'] == 'vagrant.dev' %}
+{{ host }}.vagrant.dev ssh-dsa {{ hostvars[host]['ansible_ssh_host_key_dsa_public'] }}
+{{ host }}.vagrant.dev ssh-rsa {{ hostvars[host]['ansible_ssh_host_key_rsa_public'] }}
+{% endif %}
+{% endfor %}

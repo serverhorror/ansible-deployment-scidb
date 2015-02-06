@@ -1,0 +1,9 @@
+---
+- name: Collect Public SSH Keys
+  sudo: true
+  sudo_user: root
+  template:
+    dest: "/etc/ssh/ssh_known_hosts"
+    src: "known_hosts.j2"
+    mode: "0644"
+
