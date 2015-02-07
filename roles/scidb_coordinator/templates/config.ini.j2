@@ -1,0 +1,41 @@
+[cluster]
+server-0=scidb-coordinator.vagrant.dev,1
+install_root=/opt/scidb/{{ scidb.version }}
+pluginsdir=/opt/scidb/{{ scidb.version }}/lib/scidb/plugins
+logconf=/opt/scidb/{{ scidb.version }}/share/scidb/log4cxx.properties
+db_user=scidb
+db_passwd=scdib
+base-port=1239
+base-path=/srv/scidb/{{ scidb.version }}/base
+redundancy=0
+
+### Threading: max_concurrent_queries=1, threads_per_query=1
+# max_concurrent_queries + 2:
+execution-threads=3
+# max_concurrent_queries * threads_per_query:
+result-prefetch-threads=1
+# threads_per_query:
+result-prefetch-queue-size=1
+operator-threads=1
+
+### Memory: 2048MB per instance, 1536MB reserved
+# network: 614MB per instance assuming 5MB average chunks
+# in units of chunks per query:
+sg-send-queue-size=61
+sg-receive-queue-size=61
+# caches: 614MB per instance
+smgr-cache-size=307
+mem-array-threshold=307
+# sort: 307MB per instance (specified per thread)
+merge-sort-buffer=307
+# NOTE: Uncomment the following line to set a hard memory limit;
+# NOTE: queries exceeding this cap will fail:
+# max-memory-limit=2048
+
+####################
+# WARNING: Make sure all of the below directories are created
+# before you execute 'initall'
+
+# Instance storage directories on scidb-coordinator.vagrant.dev
+data-dir-prefix-0-0=/srv/scidb/{{ scidb.version }}/data/cluster.1
+data-dir-prefix-0-1=/srv/scidb/{{ scidb.version }}/data/cluster.2
