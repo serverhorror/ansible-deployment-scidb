@@ -7,3 +7,11 @@
     dest: /etc/yum.repos.d/scidb.repo
     mode: "0644"
 - include: user.yml
+- name: Base Dir
+  sudo: true
+  sudo_user: root
+  file:
+    path: /srv/scidb
+    state: directory
+    owner: scidb
+    mode: 0755
