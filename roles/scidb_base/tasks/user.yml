@@ -5,8 +5,8 @@
   user:
     state: present
     name: scidb
-    home: "/opt/scidb"
-    system: yes
+    # home: "/opt/scidb"
+    # system: yes
 - name: SSH base directory
   sudo: true
   sudo_user: scidb
