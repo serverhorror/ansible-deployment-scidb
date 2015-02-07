@@ -1,13 +1,13 @@
 ---
 - name: SciDB
   hosts: all
-  pre_tasks:
-    - name: YUM Update
-      sudo: true
-      sudo_user: root
-      yum:
-        name: "*"
-        state: latest
+  # pre_tasks:
+  #   - name: YUM Update
+  #     sudo: true
+  #     sudo_user: root
+  #     yum:
+  #       name: "*"
+  #       state: latest
   roles:
     - python
     - ssh
