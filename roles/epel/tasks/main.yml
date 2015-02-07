@@ -4,4 +4,4 @@
   sudo_user: root
   yum:
     state: present
-    name: "http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm"
+    name: "http://download.fedoraproject.org/pub/epel/6/{{ ansible_architecture }}/epel-release-6-8.noarch.rpm"
